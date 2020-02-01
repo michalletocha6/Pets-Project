@@ -1,4 +1,4 @@
-package letocha.michal.home;
+package letocha.michal.pets_project.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +9,6 @@ public class HomeController {
     @RequestMapping("/")
     public String landingPageView() {
 
-        return "home";
+        return "";
     }
 }
