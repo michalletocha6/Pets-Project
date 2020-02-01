@@ -32,7 +32,7 @@
                     </div>
                     <br>
                     <br>
-                    <span>Nie masz konta?<a href="/register">Zarejestruj się</a></span>
+                    <span>Nie masz konta?<a href="/register"> Zarejestruj się</a></span>
                     <br>
                     <br>
                     <button class="btn btn-color rounded-0" type="submit">Zaloguj</button>

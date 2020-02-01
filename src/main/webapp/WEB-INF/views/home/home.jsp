@@ -14,7 +14,6 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/html/navTop.jsp" %>
-
 <%@ include file="/WEB-INF/views/html/scripts.jsp" %>
 </body>
 </html>
