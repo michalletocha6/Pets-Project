@@ -1,7 +1,9 @@
 package letocha.michal.pets_project.entity;
 
 import letocha.michal.pets_project.validator.EmailExistence;
+import letocha.michal.pets_project.validator.LoginValidationGroupName;
 import letocha.michal.pets_project.validator.PasswordMatches;
+import letocha.michal.pets_project.validator.UserExistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +20,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "users")
 @PasswordMatches
+@UserExistence(groups = {LoginValidationGroupName.class})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
