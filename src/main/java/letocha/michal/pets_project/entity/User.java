@@ -1,5 +1,7 @@
 package letocha.michal.pets_project.entity;
 
+import letocha.michal.pets_project.validator.EmailExistence;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +27,11 @@ public class User {
 
     @NotBlank
     @Email
+    @EmailExistence
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "(?=.*[0-9])")
+    @Pattern(regexp = "(?=.*\\d).{6,}")
     private String password;
 
     @NotBlank
