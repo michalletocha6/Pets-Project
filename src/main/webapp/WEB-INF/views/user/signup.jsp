@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: michalletocha
@@ -18,7 +19,8 @@
     <div class="container pt-4 pb-4">
         <div class="border-dashed view-height">
             <div class="container w-25">
-                <form:form modelAttribute="user"  class="padding-small text-center" method="post" action="/register">
+                <form:form modelAttribute="user"  class="padding-small text-center" method="post"
+                           action="/register">
                     <h1 class="text-color-darker">Rejestracja</h1>
                     <div class="form-group">
                         <label>Nazwa użytkownika: </label>
@@ -46,6 +48,8 @@
                         <form:checkbox path="acceptRules"/>
                         <form:errors path="acceptRules"/>
                     </div>
+<%--                    Password matching error, this returns errors of Object--%>
+                    <form:errors path=""/>
                     <button class="btn btn-color rounded-0" type="submit">Zarejestruj</button>
                 </form:form>
             </div>

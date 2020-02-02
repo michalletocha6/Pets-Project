@@ -1,6 +1,7 @@
 package letocha.michal.pets_project.entity;
 
 import letocha.michal.pets_project.validator.EmailExistence;
+import letocha.michal.pets_project.validator.PasswordMatches;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
+@PasswordMatches
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +44,8 @@ public class User {
 
     private int admin = 0;
     private int enable = 1;
-    private String photo;
+    //    Defaultowa nazwa zdjecia przypisana odrazu, pozniej bedziemy zmieniac
+    private String photo = "userNoPhoto.jpg";
 
     @AssertTrue
     private boolean acceptRules;
