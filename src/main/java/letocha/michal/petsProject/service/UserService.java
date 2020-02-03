@@ -6,7 +6,6 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -36,16 +35,28 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
+    public void updateUserEditData(User user) {
+        User userToUpdate = userRepository.findById(user.getId()).get();
+        userToUpdate.setUsername(user.getUsername());
+        userToUpdate.setDescription(user.getDescription());
+        userToUpdate.setEmail(user.getEmail());
+        userRepository.save(userToUpdate);
+    }
+
+    public void updateUserPasswordEditData(User user, User userFromSession) {
+        User userToUpdate = userRepository.findById(userFromSession.getId()).get();
+        userToUpdate.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+        userRepository.save(userToUpdate);
+    }
+
 //    Session methods
 
     public void addUserToSession(HttpServletRequest request, User user) {
-        HttpSession session = request.getSession();
-        session.setAttribute("userSession", user);
+        request.getSession().setAttribute("userSession", user);
     }
 
 
     public User getUserFromSession(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        return (User) session.getAttribute("user");
+        return (User) request.getSession().getAttribute("userSession");
     }
 }

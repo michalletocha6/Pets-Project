@@ -2,23 +2,20 @@ package letocha.michal.petsProject.controllers;
 
 import letocha.michal.petsProject.entity.User;
 import letocha.michal.petsProject.service.UserService;
-import letocha.michal.petsProject.validator.LoginValidationGroupName;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import letocha.michal.petsProject.validator.validationGroups.LoginValidationGroupName;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
 public class LoginController {
-    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
+//    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
     private final UserService userService;
 
     public LoginController(UserService userService) {

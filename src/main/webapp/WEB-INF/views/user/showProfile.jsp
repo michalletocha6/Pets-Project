@@ -31,7 +31,15 @@
             </div>
             <div class="m-4 p-4 border-dashed">
                 <div>
-                    Wyswietlic informacje o uzytkowniku, zdjecie, opis itp.
+                    <span>Informacje o użytkowniku:</span>
+                    <ul>
+                        <li>Nazwa konta: <c:out value="${user.username}"/></li>
+<%--                        <img src="/img/<c:out value='${user.photo}'/>"/>--%>
+                        <li>Opis użytkownika: <c:out value="${user.description}"/></li>
+<%--                        Ewentualnie znacznik czy chce zeby wyswietlic--%>
+<%--                        <li>Email: <c:out value="${user.email}"/></li>--%>
+                    </ul>
+
                 </div>
             </div>
         </div>

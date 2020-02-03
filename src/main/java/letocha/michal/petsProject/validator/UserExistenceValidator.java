@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class UserExistenceValidator implements ConstraintValidator<UserExistence, Object> {
+public class UserExistenceValidator implements ConstraintValidator<UserExistence, User> {
     private final UserService userService;
 
     public UserExistenceValidator(UserService userService) {
@@ -15,8 +15,7 @@ public class UserExistenceValidator implements ConstraintValidator<UserExistence
     }
 
     @Override
-    public boolean isValid(Object obj, ConstraintValidatorContext context) {
-        User user = (User) obj;
+    public boolean isValid(User user, ConstraintValidatorContext context) {
         User userByEmail = userService.getUserByEmail(user.getEmail());
         if (userByEmail == null) {
             return false;

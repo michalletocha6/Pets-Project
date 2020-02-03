@@ -7,25 +7,39 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <%@ include file="/WEB-INF/views/html/header.jsp" %>
-</head>
-<body>
-<header class="page-header">
-    <nav class="navbar navbar-expand-lg justify-content-around">
-        <a href="/" class="navbar-brand main-logo">
-            Pet <span>Lovers</span>
-        </a>
-        <%--        To wyswietlamy gdy uzytkownik jest zalogowany--%>
-        <c:if test="${userSession!=null}">
-            <a href="/profile"><img class="user-photo" src='/img/<c:out value="${userSession.photo}"/>'/>
-            <a href="/profile" class="user-name"><c:out value="${userSession.username}"/></a>
-        </c:if>
-        <c:if test="${userSession==null}">
-            <a class="login" href="/login">Zaloguj się</a>
-        </c:if>
-    </nav>
-</header>
-</body>
-</html>
+<c:if test="${userSession==null}">
+    <header class="page-header">
+        <nav class="navbar navbar-expand-lg justify-content-around">
+            <a href="/" class="navbar-brand main-logo">
+                Pet <span>Lovers</span>
+            </a>
+            <ul class="nav nounderline text-uppercase">
+                <li class="nav-item ml-4">
+                    <a class="nav-link color-header" href="/login">zaloguj się</a>
+                </li>
+                <li class="nav-item ml-4">
+                    <a class="nav-link" href="#about">o aplikacji</a>
+                </li>
+                <li class="nav-item ml-4">
+                    <a class="nav-link disabled" href="recipes.html">Przepisy</a>
+                </li>
+                <li class="nav-item ml-4">
+                    <a class="nav-link disabled" href="#contact">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</c:if>
+<c:if test="${userSession!=null}">
+    <header class="page-header">
+        <nav class="navbar navbar-expand-lg justify-content-between">
+            <a href="/" class="navbar-brand main-logo main-logo-smaller">
+                Pet <span>Lovers</span>
+            </a>
+            <div class="d-flex justify-content-around">
+                <a href="/profile"><h4 class="text-light mr-3">${sessionScope.userSession.username}</h4></a>
+                <div class="circle-div text-center"><a href="/profile"><i class="fas fa-user icon-user"></i></a></div>
+            </div>
+        </nav>
+    </header>
+</c:if>

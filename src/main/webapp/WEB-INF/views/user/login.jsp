@@ -19,7 +19,7 @@
     <div class="container pt-4 pb-4">
         <div class="border-dashed view-height">
             <div class="container w-25">
-                <form:form modelAttribute="user" class="padding-small text-center" method="post" action="/login">
+                <form:form modelAttribute="user" cssClass="padding-small text-center" method="post" action="/login">
                     <h1 class="text-color-darker">Logowanie</h1>
                     <div class="form-group">
                         <label>Email: </label>

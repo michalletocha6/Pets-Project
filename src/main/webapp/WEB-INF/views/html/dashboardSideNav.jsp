@@ -20,8 +20,14 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/profile/edit">
+        <a class="nav-link" href='<c:url value = "/profile/edit"/>'>
             <span>Edytuj dane</span>
+            <i class="fas fa-angle-right"></i>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href='<c:url value = "/profile/editPassword"/>'>
+            <span>Zmiana hasła</span>
             <i class="fas fa-angle-right"></i>
         </a>
     </li>

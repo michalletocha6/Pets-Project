@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: michalletocha
@@ -21,7 +22,8 @@
             <div class="m-4 border-dashed view-height">
                 <!-- fix action, method -->
                 <!-- add name attribute for all inputs -->
-                <form action="/profile/edit" method="post">
+                <form:form modelAttribute="user" action="/profile/edit" method="post">
+                    <form:hidden path="id"/>
                     <div class="mt-4 ml-4 mr-4">
                         <div class="row border-bottom border-3">
 
@@ -35,27 +37,37 @@
                         <table class="table borderless">
                             <tbody>
                             <tr class="d-flex">
-                                <th scope="row" class="col-2"><h4>Imię</h4></th>
+                                <th scope="row" class="col-2"><h4>Nazwa użytkownika</h4></th>
                                 <td class="col-7">
-                                    <input class="w-100 p-1" name="name" value="${useredit.firstName}">
-                                </td>
-                            </tr>
-                            <tr class="d-flex">
-                                <th scope="row" class="col-2"><h4>Nazwisko</h4></th>
-                                <td class="col-7">
-                                    <input class="w-100 p-1" name="lastname" value="${useredit.lastName}">
+                                    <form:input cssClass="w-100 p-1" path="username"/>
+                                    <form:errors path="username"/>
                                 </td>
                             </tr>
                             <tr class="d-flex">
                                 <th scope="row" class="col-2"><h4>Email</h4></th>
-                                <td class="col-3">
-                                    <input class="p-1 w-100" type="email" name="email" value="${useredit.email}">
+                                <td class="col-7">
+                                    <form:input cssClass="w-100 p-1" path="email"/>
+                                    <form:errors path="email"/>
                                 </td>
                             </tr>
+                            <tr class="d-flex">
+                                <th scope="row" class="col-2"><h4>Opis profilu</h4></th>
+                                <td class="col-3">
+                                    <form:textarea cssClass="w-100 p-1" path="description"/>
+                                    <form:errors path="description"/>
+                                </td>
+                            </tr>
+<%--                            <tr class="d-flex">--%>
+<%--                                <th scope="row" class="col-2"><h4>Zdjęcie profilu</h4></th>--%>
+<%--                                <td class="col-3">--%>
+<%--                                    <form:input cssClass="w-100 p-1" path="photo" type="file"/>--%>
+<%--                                    <form:errors path="photo"/>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
                             </tbody>
                         </table>
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

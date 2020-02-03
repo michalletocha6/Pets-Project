@@ -1,7 +1,10 @@
 package letocha.michal.petsProject.entity;
 
+import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
+import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
 import letocha.michal.petsProject.validator.EmailExistence;
-import letocha.michal.petsProject.validator.LoginValidationGroupName;
+import letocha.michal.petsProject.validator.EmailExistenceEdit;
+import letocha.michal.petsProject.validator.validationGroups.LoginValidationGroupName;
 import letocha.michal.petsProject.validator.PasswordMatches;
 import letocha.michal.petsProject.validator.UserExistence;
 
@@ -16,27 +19,29 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.validation.groups.Default;
 
 @Entity
 @Table(name = "users")
-@PasswordMatches
+@PasswordMatches(groups = {EditPasswordValidationGroupName.class, Default.class})
 @UserExistence(groups = {LoginValidationGroupName.class})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(min = 4)
+    @NotBlank(groups = {EditValidationGroupName.class, Default.class})
+    @Size(min = 4, groups = {EditValidationGroupName.class, Default.class})
     private String username;
 
     @NotBlank
     @Email
     @EmailExistence
+    @EmailExistenceEdit(groups = {EditValidationGroupName.class})
     private String email;
 
-    @NotBlank
-    @Pattern(regexp = "(?=.*\\d).{6,}")
+    @NotBlank(groups = {EditPasswordValidationGroupName.class, Default.class})
+    @Pattern(regexp = "(?=.*\\d).{6,}", groups = {EditPasswordValidationGroupName.class, Default.class})
     private String password;
 
     @NotBlank
@@ -48,6 +53,8 @@ public class User {
     private int admin = 0;
     private int enable = 1;
     //    Defaultowa nazwa zdjecia przypisana odrazu, pozniej bedziemy zmieniac
+    @Pattern(regexp = ".*\\.(jpg|png|gif)", groups = {EditValidationGroupName.class}, message = "Niepoprawny plik," +
+            " poprawne pliki to .jpg, .png, .gif")
     private String photo = "userNoPhoto.jpg";
 
     @AssertTrue
@@ -131,21 +138,5 @@ public class User {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", repassword='" + repassword + '\'' +
-                ", description='" + description + '\'' +
-                ", admin=" + admin +
-                ", enable=" + enable +
-                ", photo='" + photo + '\'' +
-                ", acceptRules=" + acceptRules +
-                '}';
     }
 }
