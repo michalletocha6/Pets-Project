@@ -1,7 +1,7 @@
-package letocha.michal.pets_project.controllers;
+package letocha.michal.petsProject.controllers;
 
-import letocha.michal.pets_project.entity.User;
-import letocha.michal.pets_project.service.UserService;
+import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

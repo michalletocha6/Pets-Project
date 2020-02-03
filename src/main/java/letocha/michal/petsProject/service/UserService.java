@@ -1,7 +1,7 @@
-package letocha.michal.pets_project.service;
+package letocha.michal.petsProject.service;
 
-import letocha.michal.pets_project.entity.User;
-import letocha.michal.pets_project.repository.UserRepository;
+import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +32,6 @@ public class UserService {
 
     public void addUserToSession(HttpServletRequest request, User user) {
         HttpSession session = request.getSession();
-        session.setAttribute("email", user.getEmail());
-        session.setAttribute("username", user.getUsername());
+        session.setAttribute("user", user);
     }
 }

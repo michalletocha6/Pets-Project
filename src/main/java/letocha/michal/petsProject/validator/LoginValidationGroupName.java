@@ -1,4 +1,4 @@
-package letocha.michal.pets_project.validator;
+package letocha.michal.petsProject.validator;
 
 public interface LoginValidationGroupName {
 }

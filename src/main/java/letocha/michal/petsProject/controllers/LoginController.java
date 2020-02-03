@@ -1,8 +1,8 @@
-package letocha.michal.pets_project.controllers;
+package letocha.michal.petsProject.controllers;
 
-import letocha.michal.pets_project.entity.User;
-import letocha.michal.pets_project.service.UserService;
-import letocha.michal.pets_project.validator.LoginValidationGroupName;
+import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.service.UserService;
+import letocha.michal.petsProject.validator.LoginValidationGroupName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

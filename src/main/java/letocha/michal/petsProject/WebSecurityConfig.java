@@ -1,4 +1,4 @@
-package letocha.michal.pets_project;
+package letocha.michal.petsProject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

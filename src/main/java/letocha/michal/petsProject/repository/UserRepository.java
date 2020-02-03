@@ -1,6 +1,6 @@
-package letocha.michal.pets_project.repository;
+package letocha.michal.petsProject.repository;
 
-import letocha.michal.pets_project.entity.User;
+import letocha.michal.petsProject.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

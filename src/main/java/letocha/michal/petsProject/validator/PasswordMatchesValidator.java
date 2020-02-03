@@ -1,6 +1,6 @@
-package letocha.michal.pets_project.validator;
+package letocha.michal.petsProject.validator;
 
-import letocha.michal.pets_project.entity.User;
+import letocha.michal.petsProject.entity.User;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

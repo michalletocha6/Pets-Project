@@ -1,8 +1,7 @@
-package letocha.michal.pets_project.validator;
+package letocha.michal.petsProject.validator;
 
-import letocha.michal.pets_project.entity.User;
-import letocha.michal.pets_project.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.service.UserService;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -10,8 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EmailExistenceValidator implements ConstraintValidator<EmailExistence, String> {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public EmailExistenceValidator(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public void initialize(EmailExistence constraintAnnotation) {
@@ -30,8 +32,5 @@ public class EmailExistenceValidator implements ConstraintValidator<EmailExisten
             }
         }
         return true;
-    }
-
-    public EmailExistenceValidator() {
     }
 }

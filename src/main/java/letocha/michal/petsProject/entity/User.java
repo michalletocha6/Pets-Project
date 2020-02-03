@@ -1,9 +1,9 @@
-package letocha.michal.pets_project.entity;
+package letocha.michal.petsProject.entity;
 
-import letocha.michal.pets_project.validator.EmailExistence;
-import letocha.michal.pets_project.validator.LoginValidationGroupName;
-import letocha.michal.pets_project.validator.PasswordMatches;
-import letocha.michal.pets_project.validator.UserExistence;
+import letocha.michal.petsProject.validator.EmailExistence;
+import letocha.michal.petsProject.validator.LoginValidationGroupName;
+import letocha.michal.petsProject.validator.PasswordMatches;
+import letocha.michal.petsProject.validator.UserExistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
