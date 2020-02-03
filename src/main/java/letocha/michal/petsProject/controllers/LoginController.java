@@ -33,14 +33,12 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    @ResponseBody
     public String loginValidation(@Validated({LoginValidationGroupName.class}) User user, BindingResult result,
                                   HttpServletRequest request) {
         if (result.hasErrors()) {
             return "user/login";
         }
-        userService.addUserToSession(request, user);
-        logger.info((String) request.getSession().getAttribute("user"));
+        userService.addUserToSession(request, userService.getUserByEmail(user.getEmail()));
         return "redirect:/";
     }
 }

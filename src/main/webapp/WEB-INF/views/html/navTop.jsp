@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: michalletocha
@@ -17,9 +18,13 @@
             Pet <span>Lovers</span>
         </a>
         <%--        To wyswietlamy gdy uzytkownik jest zalogowany--%>
-        <%--        <img  class="user-photo" src="img/userNoPhoto.jpg"/>--%>
-        <%--        <span class="user-name">michalletocha</span>--%>
-        <a class="login" href="/login">Zaloguj się</a>
+        <c:if test="${userSession!=null}">
+            <a href="/profile"><img class="user-photo" src='/img/<c:out value="${userSession.photo}"/>'/>
+            <a href="/profile" class="user-name"><c:out value="${userSession.username}"/></a>
+        </c:if>
+        <c:if test="${userSession==null}">
+            <a class="login" href="/login">Zaloguj się</a>
+        </c:if>
     </nav>
 </header>
 </body>

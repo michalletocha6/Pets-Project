@@ -14,11 +14,6 @@ public class UserExistenceValidator implements ConstraintValidator<UserExistence
         this.userService = userService;
     }
 
-
-    @Override
-    public void initialize(UserExistence constraintAnnotation) {
-    }
-
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context) {
         User user = (User) obj;

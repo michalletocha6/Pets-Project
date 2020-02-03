@@ -132,4 +132,20 @@ public class User {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", repassword='" + repassword + '\'' +
+                ", description='" + description + '\'' +
+                ", admin=" + admin +
+                ", enable=" + enable +
+                ", photo='" + photo + '\'' +
+                ", acceptRules=" + acceptRules +
+                '}';
+    }
 }

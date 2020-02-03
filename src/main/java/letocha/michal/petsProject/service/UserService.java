@@ -17,6 +17,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+//    Methods with database
+
     public void addUser(User user) {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         userRepository.save(user);
@@ -30,8 +32,20 @@ public class UserService {
         return userRepository.findUserByEmail(email);
     }
 
+    public User getUserById(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+//    Session methods
+
     public void addUserToSession(HttpServletRequest request, User user) {
         HttpSession session = request.getSession();
-        session.setAttribute("user", user);
+        session.setAttribute("userSession", user);
+    }
+
+
+    public User getUserFromSession(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        return (User) session.getAttribute("user");
     }
 }
