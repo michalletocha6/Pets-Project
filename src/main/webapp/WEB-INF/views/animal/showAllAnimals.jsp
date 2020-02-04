@@ -10,13 +10,13 @@
 <html>
 <head>
     <title>All animals</title>
-    <%@ include file="/WEB-INF/views/html/header.jsp" %>
+    <%@ include file="/WEB-INF/views/html/headerLinks.jsp" %>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/html/navTop.jsp" %>
+<%@ include file="/WEB-INF/views/html/topBar.jsp" %>
 <section class="dashboard-section">
     <div class="row dashboard-nowrap">
-        <%@ include file="/WEB-INF/views/html/dashboardSideNav.jsp" %>
+        <%@ include file="/WEB-INF/views/html/sidebar.jsp" %>
         <div class="m-4 p-3 width-medium">
             <div class="dashboard-content border-dashed p-3 m-4 view-height">
                 <div class="row border-bottom border-3 p-1 m-1">

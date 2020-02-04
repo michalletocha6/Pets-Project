@@ -7,6 +7,7 @@ import letocha.michal.petsProject.validator.UserExistence;
 import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.LoginValidationGroupName;
+import letocha.michal.petsProject.validator.validationGroups.RegisterValidationGroupName;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
@@ -33,28 +34,29 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "users")
-@PasswordMatches(groups = {EditPasswordValidationGroupName.class, Default.class})
+@PasswordMatches(groups = {EditPasswordValidationGroupName.class, RegisterValidationGroupName.class})
 @UserExistence(groups = {LoginValidationGroupName.class})
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(groups = {EditValidationGroupName.class, Default.class})
-    @Size(min = 4, groups = {EditValidationGroupName.class, Default.class})
+    @NotBlank(groups = {EditValidationGroupName.class, RegisterValidationGroupName.class})
+    @Size(min = 4, groups = {EditValidationGroupName.class, RegisterValidationGroupName.class})
     private String username;
 
-    @NotBlank(groups = {EditValidationGroupName.class, Default.class})
-    @Email(groups = {EditValidationGroupName.class, Default.class})
-    @EmailExistence
-    @EmailExistenceEdit(groups = {EditValidationGroupName.class})
+    @NotBlank(groups = {EditValidationGroupName.class, RegisterValidationGroupName.class})
+    @Email(groups = {EditValidationGroupName.class, RegisterValidationGroupName.class})
+    @EmailExistence(groups = {RegisterValidationGroupName.class})
+    @EmailExistenceEdit(groups = EditValidationGroupName.class)
     private String email;
 
-    @NotBlank(groups = {EditPasswordValidationGroupName.class, Default.class})
-    @Pattern(regexp = "(?=.*\\d).{6,}", groups = {EditPasswordValidationGroupName.class, Default.class})
+    @NotBlank(groups = {EditPasswordValidationGroupName.class, RegisterValidationGroupName.class})
+    @Pattern(regexp = "(?=.*\\d).{6,}", groups = {EditPasswordValidationGroupName.class,
+            RegisterValidationGroupName.class})
     private String password;
 
-    @NotBlank
+    @NotBlank(groups = RegisterValidationGroupName.class)
     @Transient
     private String repassword;
 
@@ -63,11 +65,11 @@ public class AppUser {
     private int admin = 0;
     private int enable = 1;
     //    Defaultowa nazwa zdjecia przypisana odrazu, pozniej bedziemy zmieniac
-    @Pattern(regexp = ".*\\.(jpg|png|gif)", groups = {EditValidationGroupName.class}, message = "Niepoprawny plik," +
+    @Pattern(regexp = ".*\\.(jpg|png|gif)", groups = EditValidationGroupName.class, message = "Niepoprawny plik," +
             " poprawne pliki to .jpg, .png, .gif")
     private String photo = "userNoPhoto.jpg";
 
-    @AssertTrue
+    @AssertTrue(groups = RegisterValidationGroupName.class)
     private boolean acceptRules;
 
     @OneToMany
@@ -75,6 +77,7 @@ public class AppUser {
     private List<Animal> animals;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles")
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 }

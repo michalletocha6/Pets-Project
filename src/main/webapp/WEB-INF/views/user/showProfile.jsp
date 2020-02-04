@@ -9,13 +9,13 @@
 <html>
 <head>
     <title>User profile</title>
-    <%@ include file="/WEB-INF/views/html/header.jsp" %>
+    <%@ include file="/WEB-INF/views/html/headerLinks.jsp" %>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/html/navTop.jsp" %>
+<%@ include file="/WEB-INF/views/html/topBar.jsp" %>
 <section class="dashboard-section">
     <div class="row dashboard-nowrap">
-        <%@ include file="/WEB-INF/views/html/dashboardSideNav.jsp" %>
+        <%@ include file="/WEB-INF/views/html/sidebar.jsp" %>
 
                 <div class="dashboard-alerts">
                     <div class="alert-item alert-info">

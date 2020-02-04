@@ -10,13 +10,13 @@
 <html>
 <head>
     <title>Edit data</title>
-    <%@ include file="/WEB-INF/views/html/header.jsp" %>
+    <%@ include file="/WEB-INF/views/html/headerLinks.jsp" %>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/html/navTop.jsp" %>
+<%@ include file="/WEB-INF/views/html/topBar.jsp" %>
 <section class="dashboard-section">
     <div class="row dashboard-nowrap">
-        <%@ include file="/WEB-INF/views/html/dashboardSideNav.jsp" %>
+        <%@ include file="/WEB-INF/views/html/sidebar.jsp" %>
 
         <div class="m-4 p-3 width-medium text-color-darker">
             <div class="m-4 border-dashed view-height">

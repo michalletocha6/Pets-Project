@@ -15,21 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LoginController {
-//    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
     private final UserService userService;
 
     public LoginController(UserService userService) {
         this.userService = userService;
     }
 
-
-    @GetMapping("/login1")
+    @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("user", new AppUser());
+        model.addAttribute("appUser", new AppUser());
         return "user/login";
     }
 
-    @PostMapping("/login1")
+    @PostMapping("/login")
     public String loginValidation(@Validated({LoginValidationGroupName.class}) AppUser appUser, BindingResult result,
                                   HttpServletRequest request) {
         if (result.hasErrors()) {
