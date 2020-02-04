@@ -19,7 +19,7 @@
     <div class="container pt-4 pb-4">
         <div class="border-dashed view-height">
             <div class="container w-25">
-                <form:form modelAttribute="user"  class="padding-small text-center" method="post"
+                <form:form modelAttribute="appUser"  class="padding-small text-center" method="post"
                            action="/register">
                     <h1 class="text-color-darker">Rejestracja</h1>
                     <div class="form-group">

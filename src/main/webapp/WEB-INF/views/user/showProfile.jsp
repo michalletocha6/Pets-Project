@@ -33,11 +33,11 @@
                 <div>
                     <span>Informacje o użytkowniku:</span>
                     <ul>
-                        <li>Nazwa konta: <c:out value="${user.username}"/></li>
-<%--                        <img src="/img/<c:out value='${user.photo}'/>"/>--%>
-                        <li>Opis użytkownika: <c:out value="${user.description}"/></li>
+                        <li>Nazwa konta: <c:out value="${appUser.username}"/></li>
+<%--                        <img src="/img/<c:out value='${appUser.photo}'/>"/>--%>
+                        <li>Opis użytkownika: <c:out value="${appUser.description}"/></li>
 <%--                        Ewentualnie znacznik czy chce zeby wyswietlic--%>
-<%--                        <li>Email: <c:out value="${user.email}"/></li>--%>
+<%--                        <li>Email: <c:out value="${appUser.email}"/></li>--%>
                     </ul>
 
                 </div>

@@ -23,7 +23,7 @@
                 <div class="mt-4 ml-4 mr-4">
                     <!-- fix action, method -->
                     <!-- add name attribute for all inputs -->
-                    <form:form modelAttribute="user" action="/profile/editPassword" method="post">
+                    <form:form modelAttribute="appUser" action="/profile/editPassword" method="post">
                         <div class="row border-bottom border-3">
                             <div class="col"><h3 class="color-header text-uppercase">Zmień hasło</h3></div>
                             <div class="col d-flex justify-content-end mb-2">

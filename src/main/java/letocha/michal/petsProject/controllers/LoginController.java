@@ -1,6 +1,6 @@
 package letocha.michal.petsProject.controllers;
 
-import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.service.UserService;
 import letocha.michal.petsProject.validator.validationGroups.LoginValidationGroupName;
 import org.springframework.stereotype.Controller;
@@ -23,19 +23,19 @@ public class LoginController {
     }
 
 
-    @GetMapping("/login")
+    @GetMapping("/login1")
     public String login(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new AppUser());
         return "user/login";
     }
 
-    @PostMapping("/login")
-    public String loginValidation(@Validated({LoginValidationGroupName.class}) User user, BindingResult result,
+    @PostMapping("/login1")
+    public String loginValidation(@Validated({LoginValidationGroupName.class}) AppUser appUser, BindingResult result,
                                   HttpServletRequest request) {
         if (result.hasErrors()) {
             return "user/login";
         }
-        userService.addUserToSession(request, userService.getUserByEmail(user.getEmail()));
+        userService.addUserToSession(request, userService.getUserByEmail(appUser.getEmail()));
         return "redirect:/";
     }
 }

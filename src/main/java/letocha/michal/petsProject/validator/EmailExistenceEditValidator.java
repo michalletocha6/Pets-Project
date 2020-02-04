@@ -1,6 +1,6 @@
 package letocha.michal.petsProject.validator;
 
-import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,10 +18,10 @@ public class EmailExistenceEditValidator implements ConstraintValidator<EmailExi
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        User userFromSession = userService.getUserFromSession(httpServletRequest);
-        User userByEmail = userService.getUserByEmail(value);
-        if (value.equals(userFromSession.getEmail())) {
+        AppUser appUserFromSession = userService.getUserFromSession(httpServletRequest);
+        AppUser appUserByEmail = userService.getUserByEmail(value);
+        if (value.equals(appUserFromSession.getEmail())) {
             return true;
-        } else return userByEmail == null;
+        } else return appUserByEmail == null;
     }
 }

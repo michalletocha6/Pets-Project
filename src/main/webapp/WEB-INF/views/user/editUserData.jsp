@@ -22,7 +22,7 @@
             <div class="m-4 border-dashed view-height">
                 <!-- fix action, method -->
                 <!-- add name attribute for all inputs -->
-                <form:form modelAttribute="user" action="/profile/edit" method="post">
+                <form:form modelAttribute="appUser" action="/profile/edit" method="post">
                     <form:hidden path="id"/>
                     <div class="mt-4 ml-4 mr-4">
                         <div class="row border-bottom border-3">

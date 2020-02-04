@@ -1,6 +1,6 @@
 package letocha.michal.petsProject.controllers;
 
-import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.service.UserService;
 import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
@@ -32,6 +32,11 @@ public class UserProfileController {
         return "user/showProfile";
     }
 
+//    @ModelAttribute("animals")
+//    public List<Animal> listOfUserAnimals(HttpServletRequest request) {
+//
+//    }
+
     @GetMapping("/animals")
     public String showAllAnimals() {
         return "animal/showAllAnimals";
@@ -44,30 +49,30 @@ public class UserProfileController {
     }
 
     @PostMapping("/edit")
-    public String editUserDataInDatabase(@Validated({EditValidationGroupName.class}) User user,
+    public String editUserDataInDatabase(@Validated({EditValidationGroupName.class}) AppUser appUser,
                                          BindingResult result) {
         if (result.hasErrors()) {
             return "user/editUserData";
         }
-        userService.updateUserEditData(user);
+        userService.updateUserEditData(appUser);
         return "redirect:/profile";
     }
 
     @GetMapping("/editPassword")
     public String editUserPassword(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new AppUser());
         return "user/editUserPassword";
     }
 
     @PostMapping("/editPassword")
     public String editUserPasswordInDatabase(HttpServletRequest request,
-                                             @Validated(EditPasswordValidationGroupName.class) User user,
+                                             @Validated(EditPasswordValidationGroupName.class) AppUser appUser,
                                              BindingResult result) {
         if (result.hasErrors()) {
             logger.info(String.valueOf(result.getErrorCount()));
             return "user/editUserPassword";
         }
-        userService.updateUserPasswordEditData(user, userService.getUserFromSession(request));
+        userService.updateUserPasswordEditData(appUser, userService.getUserFromSession(request));
         return "redirect:/profile";
     }
 }

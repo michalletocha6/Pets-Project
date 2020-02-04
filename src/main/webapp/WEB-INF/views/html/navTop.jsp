@@ -38,7 +38,7 @@
             </a>
             <div class="d-flex justify-content-around">
                 <a href="/profile"><h4 class="text-light mr-3">${sessionScope.userSession.username}</h4></a>
-                <div class="circle-div text-center"><a href="/profile"><i class="fas fa-user icon-user"></i></a></div>
+                <div class="circle-div text-center"><a href="/profile"><i class="fas fa-appUser icon-appUser"></i></a></div>
             </div>
         </nav>
     </header>

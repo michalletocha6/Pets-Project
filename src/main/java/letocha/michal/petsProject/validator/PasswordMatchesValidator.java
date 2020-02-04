@@ -1,14 +1,14 @@
 package letocha.michal.petsProject.validator;
 
-import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.entity.AppUser;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, User> {
+public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, AppUser> {
 
     @Override
-    public boolean isValid(User user, ConstraintValidatorContext context) {
-        return user.getPassword().equals(user.getRepassword());
+    public boolean isValid(AppUser appUser, ConstraintValidatorContext context) {
+        return appUser.getPassword().equals(appUser.getRepassword());
     }
 }

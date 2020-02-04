@@ -26,6 +26,8 @@
                          pt-0 pb-0 pr-4 pl-4">Dodaj zwierzaka</a>
                     </div>
                 </div>
+                <c:if test="${!empty animals}">
+
                 <table class="table border-bottom schedules-content">
                     <thead>
                     <tr class="d-flex text-color-darker">

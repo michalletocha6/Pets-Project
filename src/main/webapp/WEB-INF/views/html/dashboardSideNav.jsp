@@ -31,7 +31,7 @@
             <i class="fas fa-angle-right"></i>
         </a>
     </li>
-    <c:if test="${user.admin == 1}">
+    <c:if test="${appUser.admin == 1}">
         <li class="nav-item">
             <a class="nav-link" href="/app/users">
                 <span>Użytkownicy</span>

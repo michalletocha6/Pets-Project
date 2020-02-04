@@ -1,6 +1,6 @@
 package letocha.michal.petsProject.controllers;
 
-import letocha.michal.petsProject.entity.User;
+import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +20,16 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String registration(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new AppUser());
         return "user/signup";
     }
 
     @PostMapping("/register")
-    public String addUserToDB(@Valid User user, BindingResult result) {
+    public String addUserToDB(@Valid AppUser appUser, BindingResult result) {
         if (result.hasErrors()) {
             return "user/signup";
         }
-        userService.addUser(user);
-        return "redirect:/";
+        userService.addUser(appUser);
+        return "redirect:/login";
     }
 }
