@@ -1,17 +1,19 @@
 package letocha.michal.petsProject.entity;
 
-import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
-import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
 import letocha.michal.petsProject.validator.EmailExistence;
 import letocha.michal.petsProject.validator.EmailExistenceEdit;
-import letocha.michal.petsProject.validator.validationGroups.LoginValidationGroupName;
 import letocha.michal.petsProject.validator.PasswordMatches;
 import letocha.michal.petsProject.validator.UserExistence;
+import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
+import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
+import letocha.michal.petsProject.validator.validationGroups.LoginValidationGroupName;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
@@ -20,6 +22,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -34,8 +37,8 @@ public class User {
     @Size(min = 4, groups = {EditValidationGroupName.class, Default.class})
     private String username;
 
-    @NotBlank
-    @Email
+    @NotBlank(groups = {EditValidationGroupName.class, Default.class})
+    @Email(groups = {EditValidationGroupName.class, Default.class})
     @EmailExistence
     @EmailExistenceEdit(groups = {EditValidationGroupName.class})
     private String email;
@@ -59,6 +62,10 @@ public class User {
 
     @AssertTrue
     private boolean acceptRules;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Animal> animals;
 
     public boolean isAcceptRules() {
         return acceptRules;
