@@ -35,7 +35,7 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>
-                        <form:form modelAttribute="appUser" cssClass="user">
+                        <form:form modelAttribute="appUser" cssClass="user" method="post">
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <form:input path="username" cssClass="form-control form-control-user"
@@ -62,12 +62,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>
-                                <form:checkbox path="acceptRules"/>
-                                Akceptuje regulamin...
-                                </label>
-                                <br>
-                                <span style="color: red"><form:errors path="acceptRules"/></span>
+                                <div class="custom-control custom-checkbox small">
+                                        <form:checkbox path="acceptRules" cssClass="custom-control-input"
+                                                       id="customCheck"/>
+                                    <label class="custom-control-label" for="customCheck">Akceptuje regulamin...</label>
+                                    <br>
+                                    <span style="color: red"><form:errors path="acceptRules"/></span>
+                                </div>
                             </div>
                             <input class="btn btn-primary btn-user btn-block"
                                    type="submit" value="Register Account">

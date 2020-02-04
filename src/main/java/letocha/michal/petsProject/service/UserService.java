@@ -64,14 +64,4 @@ public class UserService {
 //        return userRepository.find
 //    }
 
-//    Session methods
-
-    public void addUserToSession(HttpServletRequest request, AppUser appUser) {
-        request.getSession().setAttribute("userSession", appUser);
-    }
-
-
-    public AppUser getUserFromSession(HttpServletRequest request) {
-        return (AppUser) request.getSession().getAttribute("userSession");
-    }
 }

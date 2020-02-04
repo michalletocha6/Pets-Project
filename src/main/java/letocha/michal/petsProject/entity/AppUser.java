@@ -3,14 +3,13 @@ package letocha.michal.petsProject.entity;
 import letocha.michal.petsProject.validator.EmailExistence;
 import letocha.michal.petsProject.validator.EmailExistenceEdit;
 import letocha.michal.petsProject.validator.PasswordMatches;
-import letocha.michal.petsProject.validator.UserExistence;
 import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
-import letocha.michal.petsProject.validator.validationGroups.LoginValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.RegisterValidationGroupName;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,7 +26,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.validation.groups.Default;
 import java.util.List;
 import java.util.Set;
 
@@ -35,7 +33,6 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @PasswordMatches(groups = {EditPasswordValidationGroupName.class, RegisterValidationGroupName.class})
-@UserExistence(groups = {LoginValidationGroupName.class})
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +46,7 @@ public class AppUser {
     @Email(groups = {EditValidationGroupName.class, RegisterValidationGroupName.class})
     @EmailExistence(groups = {RegisterValidationGroupName.class})
     @EmailExistenceEdit(groups = EditValidationGroupName.class)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotBlank(groups = {EditPasswordValidationGroupName.class, RegisterValidationGroupName.class})
@@ -76,7 +74,7 @@ public class AppUser {
     @JoinColumn(name = "user_id")
     private List<Animal> animals;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;

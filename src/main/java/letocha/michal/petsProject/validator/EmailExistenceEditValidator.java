@@ -18,10 +18,10 @@ public class EmailExistenceEditValidator implements ConstraintValidator<EmailExi
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        AppUser appUserFromSession = userService.getUserFromSession(httpServletRequest);
+//        AppUser appUserFromSession = userService.getUserFromSession(httpServletRequest);
         AppUser appUserByEmail = userService.getUserByEmail(value);
-        if (value.equals(appUserFromSession.getEmail())) {
+//        if (value.equals(appUserFromSession.getEmail())) {
             return true;
-        } else return appUserByEmail == null;
+//        } else return appUserByEmail == null;
     }
 }

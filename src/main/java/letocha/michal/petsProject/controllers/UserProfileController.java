@@ -28,7 +28,7 @@ public class UserProfileController {
 
     @GetMapping
     public String showProfile(Model model, HttpServletRequest request) {
-        model.addAttribute("user", userService.getUserFromSession(request));
+//        model.addAttribute("user", userService.getUserFromSession(request));
         return "user/showProfile";
     }
 
@@ -44,7 +44,7 @@ public class UserProfileController {
 
     @GetMapping("/edit")
     public String editUserData(Model model, HttpServletRequest request) {
-        model.addAttribute("user", userService.getUserFromSession(request));
+//        model.addAttribute("user", userService.getUserFromSession(request));
         return "user/editUserData";
     }
 
@@ -72,7 +72,7 @@ public class UserProfileController {
             logger.info(String.valueOf(result.getErrorCount()));
             return "user/editUserPassword";
         }
-        userService.updateUserPasswordEditData(appUser, userService.getUserFromSession(request));
+//        userService.updateUserPasswordEditData(appUser, userService.getUserFromSession(request));
         return "redirect:/profile";
     }
 }
