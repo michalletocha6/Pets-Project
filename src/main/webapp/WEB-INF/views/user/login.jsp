@@ -48,9 +48,14 @@
                                     </div>
                                     <div class="form-group">
                                         <form:password path="password" cssClass="form-control form-control-user"
-                                                    id="exampleInputPassword" placeholder="Password"/>
+                                                       id="exampleInputPassword" placeholder="Password"/>
                                         <span style="color: red"><form:errors path="email"/></span>
                                     </div>
+                                    <c:if test="${!empty param.error}">
+                                        <div class="form-group">
+                                            <span style="color: red">Invalid email or password</span>
+                                        </div>
+                                    </c:if>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" id="customCheck">

@@ -1,17 +1,17 @@
 package letocha.michal.petsProject.service;
 
 import letocha.michal.petsProject.entity.AppUser;
+import letocha.michal.petsProject.entity.CurrentUser;
 import letocha.michal.petsProject.entity.Role;
 import letocha.michal.petsProject.repository.RoleRepository;
 import letocha.michal.petsProject.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 
 @Service
 public class UserService {
@@ -23,6 +23,12 @@ public class UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+
+    }
+
+    public AppUser getUserFromContext() {
+        CurrentUser currentUser = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return currentUser.getAppUser();
     }
 
 //    Methods with database
@@ -34,10 +40,6 @@ public class UserService {
         userRepository.save(appUser);
     }
 
-    public List<AppUser> getAllUsers() {
-        return userRepository.findAll();
-    }
-
     public AppUser getUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
@@ -47,11 +49,15 @@ public class UserService {
     }
 
     public void updateUserEditData(AppUser appUser) {
-        AppUser appUserToUpdate = userRepository.findById(appUser.getId()).get();
+        AppUser appUserToUpdate = userRepository.findUserByEmail(getUserFromContext().getEmail());
+
+        appUserToUpdate.setEmail(appUser.getEmail());
         appUserToUpdate.setUsername(appUser.getUsername());
         appUserToUpdate.setDescription(appUser.getDescription());
-        appUserToUpdate.setEmail(appUser.getEmail());
         userRepository.save(appUserToUpdate);
+
+        getUserFromContext().setUsername(appUser.getUsername());
+        getUserFromContext().setEmail(appUser.getEmail());
     }
 
     public void updateUserPasswordEditData(AppUser appUser, AppUser appUserFromSession) {
