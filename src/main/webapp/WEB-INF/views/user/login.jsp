@@ -49,7 +49,7 @@
                                     <div class="form-group">
                                         <form:password path="password" cssClass="form-control form-control-user"
                                                        id="exampleInputPassword" placeholder="Password"/>
-                                        <span style="color: red"><form:errors path="email"/></span>
+                                        <span style="color: red"><form:errors path="password"/></span>
                                     </div>
                                     <c:if test="${!empty param.error}">
                                         <div class="form-group">

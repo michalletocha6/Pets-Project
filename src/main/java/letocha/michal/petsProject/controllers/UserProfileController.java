@@ -1,5 +1,6 @@
 package letocha.michal.petsProject.controllers;
 
+import letocha.michal.petsProject.entity.Animal;
 import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.entity.CurrentUser;
 import letocha.michal.petsProject.service.UserService;
@@ -30,19 +31,8 @@ public class UserProfileController {
     }
 
     @GetMapping
-    public String showProfile(Model model, HttpServletRequest request) {
-//        model.addAttribute("user", userService.getUserFromSession(request));
+    public String showProfile() {
         return "user/showProfile";
-    }
-
-//    @ModelAttribute("animals")
-//    public List<Animal> listOfUserAnimals(HttpServletRequest request) {
-//
-//    }
-
-    @GetMapping("/animals")
-    public String showAllAnimals() {
-        return "animal/showAllAnimals";
     }
 
     @GetMapping("/edit")
@@ -91,5 +81,11 @@ public class UserProfileController {
         }
         userService.updateUserPasswordEditData(appUser);
         return "redirect:/profile";
+    }
+
+    @GetMapping("/animal/add")
+    public String addAnimal(Model model) {
+        model.addAttribute("animal", new Animal());
+        return "animal/addAnimal";
     }
 }
