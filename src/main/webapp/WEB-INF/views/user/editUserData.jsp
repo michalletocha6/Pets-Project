@@ -111,7 +111,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Zmień dane</h6>
                             </div>
                             <div class="card-body">
-                                <form:form modelAttribute="appUser" cssClass="user"
+                                <form:form id="userData" modelAttribute="appUser" cssClass="user"
                                            method="post" action="/profile/edit/changeUserData">
                                     <div class="form-group row">
                                         <div class="col-sm-12">

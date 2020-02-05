@@ -25,3 +25,10 @@ INSERT INTO breeds (name, type_id) VALUES ('Syjamski', 2);
 INSERT INTO breeds (name, type_id) VALUES ('Brytyjski krótkowłosy', 2);
 INSERT INTO breeds (name, type_id) VALUES ('Bengalski', 2);
 INSERT INTO breeds (name, type_id) VALUES ('Rosyjski niebieski', 2);
+
+--  ANIMAL CHARACTERS
+INSERT INTO animal_characters (name) VALUES ('Łagodny');
+INSERT INTO animal_characters (name) VALUES ('Spokojny');
+INSERT INTO animal_characters (name) VALUES ('Agresywny');
+INSERT INTO animal_characters (name) VALUES ('Towarzyski');
+INSERT INTO animal_characters (name) VALUES ('Przyjazny dla dzieci');
