@@ -4,6 +4,7 @@ import letocha.michal.petsProject.validator.EmailExistence;
 import letocha.michal.petsProject.validator.EmailExistenceEdit;
 import letocha.michal.petsProject.validator.PasswordMatches;
 import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
+import letocha.michal.petsProject.validator.validationGroups.EditPhotoValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.RegisterValidationGroupName;
 import lombok.Data;
@@ -54,7 +55,7 @@ public class AppUser {
             RegisterValidationGroupName.class})
     private String password;
 
-    @NotBlank(groups = RegisterValidationGroupName.class)
+    @NotBlank(groups = {RegisterValidationGroupName.class, EditPasswordValidationGroupName.class})
     @Transient
     private String repassword;
 
@@ -63,7 +64,7 @@ public class AppUser {
     private int admin = 0;
     private int enable = 1;
     //    Defaultowa nazwa zdjecia przypisana odrazu, pozniej bedziemy zmieniac
-    @Pattern(regexp = ".*\\.(jpg|png|gif)", groups = EditValidationGroupName.class, message = "Niepoprawny plik," +
+    @Pattern(regexp = ".*\\.(jpg|png|gif)", groups = {EditPhotoValidationGroupName.class}, message = "Niepoprawny plik," +
             " poprawne pliki to .jpg, .png, .gif")
     private String photo = "userNoPhoto.jpg";
 

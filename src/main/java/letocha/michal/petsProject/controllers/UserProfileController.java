@@ -4,9 +4,9 @@ import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.entity.CurrentUser;
 import letocha.michal.petsProject.service.UserService;
 import letocha.michal.petsProject.validator.validationGroups.EditPasswordValidationGroupName;
+import letocha.michal.petsProject.validator.validationGroups.EditPhotoValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@Slf4j
 @RequestMapping("/profile")
 public class UserProfileController {
     private final UserService userService;
-    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     public UserProfileController(UserService userService) {
         this.userService = userService;
@@ -48,34 +48,48 @@ public class UserProfileController {
     @GetMapping("/edit")
     public String editUserData(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         model.addAttribute("appUser", userService.getUserByEmail(customUser.getAppUser().getEmail()));
-//        model.addAttribute("appUser1", userService.getUserByEmail(customUser.getAppUser().getEmail()));
+        model.addAttribute("appUserPhoto", new AppUser());
+        model.addAttribute("appUserPassword", new AppUser());
         return "user/editUserData";
     }
 
-    @PostMapping("/edit")
-    public String editUserDataInDatabase(@Validated({EditValidationGroupName.class}) AppUser appUser,
+    @PostMapping("/edit/changeUserData")
+    public String editUserDataInDatabase(Model model, @Validated({EditValidationGroupName.class}) AppUser appUser,
                                          BindingResult result) {
         if (result.hasErrors()) {
+            model.addAttribute("appUserPhoto", new AppUser());
+            model.addAttribute("appUserPassword", new AppUser());
             return "user/editUserData";
         }
         userService.updateUserEditData(appUser);
         return "redirect:/profile";
     }
 
-    @GetMapping("/editPassword")
-    public String editUserPassword(Model model) {
-        model.addAttribute("user", new AppUser());
-        return "user/editUserPassword";
+    @PostMapping("/edit/changePhoto")
+    public String editUserPhotoInDatabase(@AuthenticationPrincipal CurrentUser customUser, Model model,
+                                          @ModelAttribute(value = "appUserPhoto")
+                                          @Validated({EditPhotoValidationGroupName.class}) AppUser appUser,
+                                          BindingResult result) {
+        if (result.hasErrors()) {
+            model.addAttribute("appUserPassword", new AppUser());
+            model.addAttribute("appUser", userService.getUserByEmail(customUser.getAppUser().getEmail()));
+            return "user/editUserData";
+        }
+        userService.updateUserPhoto(appUser);
+        return "redirect:/profile";
     }
 
-    @PostMapping("/editPassword")
-    public String editUserPasswordInDatabase(@Validated(EditPasswordValidationGroupName.class) AppUser appUser,
+    @PostMapping("/edit/changePassword")
+    public String editUserPasswordInDatabase(@AuthenticationPrincipal CurrentUser customUser, Model model,
+                                             @ModelAttribute(value = "appUserPassword")
+                                             @Validated({EditPasswordValidationGroupName.class}) AppUser appUser,
                                              BindingResult result) {
         if (result.hasErrors()) {
-            logger.info(String.valueOf(result.getErrorCount()));
-            return "user/editUserPassword";
+            model.addAttribute("appUserPhoto", new AppUser());
+            model.addAttribute("appUser", userService.getUserByEmail(customUser.getAppUser().getEmail()));
+            return "user/editUserData";
         }
-//        userService.updateUserPasswordEditData(appUser, userService.getUserFromSession(request));
+        userService.updateUserPasswordEditData(appUser);
         return "redirect:/profile";
     }
 }

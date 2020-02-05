@@ -6,7 +6,6 @@ import letocha.michal.petsProject.entity.Role;
 import letocha.michal.petsProject.repository.RoleRepository;
 import letocha.michal.petsProject.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +22,6 @@ public class UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
-
     }
 
     public AppUser getUserFromContext() {
@@ -60,9 +58,16 @@ public class UserService {
         getUserFromContext().setEmail(appUser.getEmail());
     }
 
-    public void updateUserPasswordEditData(AppUser appUser, AppUser appUserFromSession) {
-        AppUser appUserToUpdate = userRepository.findById(appUserFromSession.getId()).get();
-        appUserToUpdate.setPassword(BCrypt.hashpw(appUser.getPassword(), BCrypt.gensalt()));
+    public void updateUserPhoto(AppUser appUser) {
+        AppUser appUserToUpdate = userRepository.findUserByEmail(getUserFromContext().getEmail());
+
+        appUserToUpdate.setPhoto(appUser.getPhoto());
+        userRepository.save(appUserToUpdate);
+    }
+
+    public void updateUserPasswordEditData(AppUser appUser) {
+        AppUser appUserToUpdate = userRepository.findUserByEmail(getUserFromContext().getEmail());
+        appUserToUpdate.setPassword(passwordEncoder.encode(appUser.getPassword()));
         userRepository.save(appUserToUpdate);
     }
 

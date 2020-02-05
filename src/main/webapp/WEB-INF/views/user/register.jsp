@@ -63,8 +63,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox small">
-                                        <form:checkbox path="acceptRules" cssClass="custom-control-input"
-                                                       id="customCheck"/>
+                                    <form:checkbox path="acceptRules" cssClass="custom-control-input"
+                                                   id="customCheck"/>
                                     <label class="custom-control-label" for="customCheck">Akceptuje regulamin...</label>
                                     <br>
                                     <span style="color: red"><form:errors path="acceptRules"/></span>
@@ -85,7 +85,7 @@
                             <a class="small" href="forgot-password.html">Forgot Password?</a>
                         </div>
                         <div class="text-center">
-                            <a class="small" href="login.html">Already have an account? Login!</a>
+                            <a class="small" href="/login">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>
@@ -100,4 +100,3 @@
 </body>
 
 </html>
-
