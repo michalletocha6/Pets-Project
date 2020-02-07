@@ -43,7 +43,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Add Animal 1 of 2</h1>
+                <h1 class="h3 mb-4 text-gray-800">Add Animal</h1>
 
                 <form:form modelAttribute="animal" method="post">
                     <div class="form-row">
@@ -61,12 +61,41 @@
                             <span style="color: red"><form:errors path="type"/></span>
                         </div>
                     </div>
-                    <div class="form-group col-md-12">
-                        <label for="inputDescription">Opis pupila</label>
-                        <form:textarea cssClass="form-control" id="inputDescription" path="description"
-                                       placeholder="Cos o pupilu"/>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputBreed">Rasa</label>
+                            <form:select path="type.breeds" cssClass="form-control" id="inputBreed" multiple="false">
+                                <form:option value="" label="--Please Select--"/>
+                            </form:select>
+                            <span style="color: red"><form:errors path="type.breeds"/></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputDescription">Opis pupila</label>
+                            <form:textarea cssClass="form-control" id="inputDescription" path="description"
+                                           placeholder="Cos o pupilu"/>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">1 z 2</button>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputDescription">Wiek pupila</label>
+                            <form:input cssClass="form-control" id="inputAge" path="age"
+                                        placeholder="Wiek (Miesiące)" type="number"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            ZDJECIE TUTAJ BEDZIE DO WGRANIA
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <span>Czy jest rasowy?</span>
+                                <input type="radio" aria-label="Radio button for following text input">
+                                <br>
+                                <input type="radio" aria-label="Radio button for following text input">
+                                <br>
+                                <input type="radio" aria-label="Radio button for following text input">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Zapisz</button>
                 </form:form>
 
             </div>

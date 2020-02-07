@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface BreedRepository extends JpaRepository<Breed, Integer> {
 
-    List<Breed> findAllBreedsByType(Type type);
+    List<Breed> findAllBreedsByTypeId(Integer id);
 }

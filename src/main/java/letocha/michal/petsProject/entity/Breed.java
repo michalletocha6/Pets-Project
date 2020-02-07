@@ -1,5 +1,6 @@
 package letocha.michal.petsProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class Breed {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     private Type type;
 }

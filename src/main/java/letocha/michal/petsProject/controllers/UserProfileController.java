@@ -14,6 +14,7 @@ import letocha.michal.petsProject.validator.validationGroups.EditPhotoValidation
 import letocha.michal.petsProject.validator.validationGroups.EditValidationGroupName;
 import letocha.michal.petsProject.validator.validationGroups.FirstPartAnimalAddFormGroupName;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -102,41 +105,25 @@ public class UserProfileController {
         return typeService.getAllTypes();
     }
 
-    @GetMapping("/animal/add/1of2")
+    @GetMapping("/animal/add")
     public String addAnimalFirstPart(Model model) {
         model.addAttribute("animal", new Animal());
-        return "animal/addAnimalPartOne";
+        return "animal/addAnimal";
     }
 
-    @PostMapping("/animal/add/1of2")
-    public String saveFirstPartToSession(HttpServletRequest request,
-                                          @Validated({FirstPartAnimalAddFormGroupName.class}) Animal animal,
-                                          BindingResult result) {
+    @GetMapping( value = "/animal/breed", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<Breed> breedSendAjax(@RequestParam String typeId) {
+        return breedService.getAllBreedsForTypeId(Integer.parseInt(typeId));
+    }
+
+    @PostMapping("/animal/add")
+    public String saveAnimalToDataBase(@Validated({FirstPartAnimalAddFormGroupName.class}) Animal animal,
+                                         BindingResult result) {
         if (result.hasErrors()) {
-            return "animal/addAnimalPartOne";
+            return "animal/addAnimal";
         }
-        animalService.addAnimalToSession(request, animal);
-        return "redirect:/profile/animal/add/2of2";
-    }
-
-    @GetMapping("/animal/add/2of2")
-    public String addAnimalSecondPart(HttpServletRequest request, Model model) {
-        if (animalService.getAnimalFromSession(request)!=null) {
-            breedService.getAllBreedsForType(animalService.getAnimalFromSession(request).getType());
-        }
-//        model.addAttribute("breeds", )
-        model.addAttribute("animal", new Animal());
-        return "animal/addAnimalPartTwo";
-    }
-
-    @PostMapping("/animal/add/2of2")
-    public String saveAnimalToDatabase(HttpServletRequest request,
-                                          @Validated({FirstPartAnimalAddFormGroupName.class}) Animal animal,
-                                          BindingResult result) {
-        if (result.hasErrors()) {
-            return "animal/addAnimalPartOne";
-        }
-        animalService.addAnimalToSession(request, animal);
-        return "redirect:/profile/animal/add/2of2";
+        animalService.addAnimalToDatabase(animal);
+        return "redirect:/profile";
     }
 }

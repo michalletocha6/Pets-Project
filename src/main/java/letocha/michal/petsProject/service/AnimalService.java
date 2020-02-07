@@ -19,14 +19,4 @@ public class AnimalService {
         animalRepository.save(animal);
     }
 
-    //SESSION ANIMAL--------------------------------------------------
-    public void addAnimalToSession(HttpServletRequest request, Animal animal) {
-        HttpSession session = request.getSession();
-        session.setAttribute("currentAnimalEdit", animal);
-    }
-
-    public Animal getAnimalFromSession(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        return (Animal) session.getAttribute("currentAnimalEdit");
-    }
 }

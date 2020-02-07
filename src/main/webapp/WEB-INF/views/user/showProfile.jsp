@@ -136,7 +136,7 @@
 
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Your Pets</h1>
-                    <a href="/profile/animal/add/1of2"><button type="button" class="btn btn-primary">Add Pet</button></a>
+                    <a href="/profile/animal/add"><button type="button" class="btn btn-primary">Add Pet</button></a>
                 </div>
 
                 <div class="row">
