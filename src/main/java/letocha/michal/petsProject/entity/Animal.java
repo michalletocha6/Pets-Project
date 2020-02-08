@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -36,6 +37,10 @@ public class Animal {
     @JoinColumn(name = "type_id")
     private Type type;
 
+    @OneToOne
+    @JoinColumn(name = "breed_id")
+    private Breed breed;
+
     private String description;
 
     //    Miesiace
@@ -45,4 +50,7 @@ public class Animal {
     @ManyToMany
     @JoinTable(name = "animals_animalCharacters")
     private List<AnimalCharacter> animalCharacters;
+
+    @ManyToOne
+    private AppUser user;
 }

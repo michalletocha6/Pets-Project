@@ -141,6 +141,7 @@
 
                 <div class="row">
 
+                    <c:forEach items="${animals}" var="animal">
                     <div class="col-lg-6">
 
                         <!-- Collapsable Card Example -->
@@ -148,7 +149,7 @@
                             <!-- Card Header - Accordion -->
                             <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
                                role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary">Pet Name</h6>
+                                <h6 class="m-0 font-weight-bold text-primary"><c:out value="${animal.name}"/></h6>
                             </a>
                             <!-- Card Content - Collapse -->
                             <div class="collapse show" id="collapseCardExample">
@@ -162,6 +163,7 @@
                         </div>
 
                     </div>
+                    </c:forEach>
 
                 </div>
 

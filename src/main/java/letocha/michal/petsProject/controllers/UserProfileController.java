@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -105,13 +104,18 @@ public class UserProfileController {
         return typeService.getAllTypes();
     }
 
+    @ModelAttribute("animals")
+    public List<Animal> animalList() {
+        return animalService.getAllAnimals();
+    }
+
     @GetMapping("/animal/add")
     public String addAnimalFirstPart(Model model) {
         model.addAttribute("animal", new Animal());
         return "animal/addAnimal";
     }
 
-    @GetMapping( value = "/animal/breed", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/animal/breed", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<Breed> breedSendAjax(@RequestParam String typeId) {
         return breedService.getAllBreedsForTypeId(Integer.parseInt(typeId));
@@ -119,7 +123,7 @@ public class UserProfileController {
 
     @PostMapping("/animal/add")
     public String saveAnimalToDataBase(@Validated({FirstPartAnimalAddFormGroupName.class}) Animal animal,
-                                         BindingResult result) {
+                                       BindingResult result) {
         if (result.hasErrors()) {
             return "animal/addAnimal";
         }

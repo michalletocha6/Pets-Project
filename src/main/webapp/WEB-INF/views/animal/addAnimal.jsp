@@ -64,7 +64,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputBreed">Rasa</label>
-                            <form:select path="type.breeds" cssClass="form-control" id="inputBreed" multiple="false">
+                            <form:select path="breed" cssClass="form-control" id="inputBreed" multiple="false">
                                 <form:option value="" label="--Please Select--"/>
                             </form:select>
                             <span style="color: red"><form:errors path="type.breeds"/></span>
@@ -88,11 +88,15 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <span>Czy jest rasowy?</span>
-                                <input type="radio" aria-label="Radio button for following text input">
-                                <br>
-                                <input type="radio" aria-label="Radio button for following text input">
-                                <br>
-                                <input type="radio" aria-label="Radio button for following text input">
+                            <br>
+                            <label for="nocertificate">Rasowy</label>
+                            <input type="radio" name="breedTypes" id="nocertificate">
+                            <br>
+                            <label for="certificate">Rasowy z certyfikatem</label>
+                            <input type="radio" name="breedTypes" id="certificate">
+                            <br>
+                            <label for="mixed">Mieszaniec</label>
+                            <input type="radio" name="breedTypes" id="mixed">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Zapisz</button>
