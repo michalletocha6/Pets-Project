@@ -79,4 +79,8 @@ public class AppUser {
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Advertisement> advertisements;
 }

@@ -1,5 +1,6 @@
 package letocha.michal.petsProject.controllers;
 
+import letocha.michal.petsProject.entity.Advertisement;
 import letocha.michal.petsProject.entity.Animal;
 import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.entity.Breed;
@@ -129,5 +130,12 @@ public class UserProfileController {
         }
         animalService.addAnimalToDatabase(animal);
         return "redirect:/profile";
+    }
+
+    //  -----------------------------------------  ANIMAL SECTION ---------------------------------------- //
+
+    @GetMapping("/advertisements")
+    public String advList() {
+        return "advertisement/advertisementList";
     }
 }
