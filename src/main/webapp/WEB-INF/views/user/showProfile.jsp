@@ -55,12 +55,14 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Liczba ogłoszeń
+                                            Liczba zwierząt
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <c:out value="${animals.size()}"/>
+                                        </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        <i class="fas fa-paw fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -136,33 +138,35 @@
 
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Your Pets</h1>
-                    <a href="/profile/animal/add"><button type="button" class="btn btn-primary">Add Pet</button></a>
+                    <a href="/profile/animal/add">
+                        <button type="button" class="btn btn-primary">Add Pet</button>
+                    </a>
                 </div>
 
                 <div class="row">
 
                     <c:forEach items="${animals}" var="animal">
-                    <div class="col-lg-6">
+                        <div class="col-lg-6">
 
-                        <!-- Collapsable Card Example -->
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Accordion -->
-                            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
-                               role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary"><c:out value="${animal.name}"/></h6>
-                            </a>
-                            <!-- Card Content - Collapse -->
-                            <div class="collapse show" id="collapseCardExample">
-                                <div class="card-body">
-                                    Pet image....
-                                    <br>
-                                    <span style="font-size: x-large">Pet info:</span>
+                            <!-- Collapsable Card Example -->
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Accordion -->
+                                <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                                   role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                    <h6 class="m-0 font-weight-bold text-primary"><c:out value="${animal.name}"/></h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse show" id="collapseCardExample">
+                                    <div class="card-body">
+                                        Pet image....
+                                        <br>
+                                        <span style="font-size: x-large">Pet info:</span>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </div>
+                        </div>
                     </c:forEach>
 
                 </div>

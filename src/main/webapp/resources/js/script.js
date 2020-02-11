@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // SELECT TYPE AND BREED-------------------------------------------------------------------------------------------
     let selectElementType = document.querySelector("#inputType");
+    let $inputBreed = $("#inputBreed");
+    $inputBreed.prop('disabled', true);
+
     selectElementType.addEventListener('change', function () {
         let value = selectElementType.value;
         $.ajax({
@@ -17,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("error data not found")
             },
             success: function (response) {
-                let $inputBreed = $("#inputBreed");
+                $inputBreed.prop('disabled', false);
                 if ($inputBreed.children().length > 1) {
                     $inputBreed.empty();
                     let optionSelect = $('<option/>');

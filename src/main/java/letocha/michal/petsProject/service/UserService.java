@@ -71,8 +71,4 @@ public class UserService {
         userRepository.save(appUserToUpdate);
     }
 
-//    public List<Animal> findAnimalsByUser(User user) {
-//        return userRepository.find
-//    }
-
 }

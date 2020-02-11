@@ -25,4 +25,5 @@ public class AnimalService {
     public List<Animal> getAllAnimals() {
         return animalRepository.findAll();
     }
+
 }
