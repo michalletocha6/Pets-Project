@@ -1,4 +1,6 @@
-# Pets forum - ending project for CodersLab. Now my current project i am working on.
+# Pets forum - ending project for CodersLab.
+
+*Now my current project i am working on.*
 
 This is Spring Boot application is for users with pets. User can come and make a post or start conversation on forum. Clients can make an account, give some information about theirselfes and talk to other peoples about their pets. I have some ideas for this project, that's why i won't talk about details. Simple project with advertisements and forum inside.
 
