@@ -13,7 +13,8 @@ To open project on intellij IDEA:
  ```
  * open intellij
  * go to File
- * Open with existing sources
+ * New
+ * Project from existing sources
  * choose folder with cloned repo
  * open it
  
