@@ -1,13 +1,34 @@
-# Pets-Project
-This is project i am currently developing on my own.
+# Pets forum - ending project for CodersLab. Now my current project i am working on.
 
-## Technologies used:
-- Spring Boot
-- Spring Security
-- Spring MVC
-- Spring Data
-- Hibernate
-- SQL for database
+This is Spring Boot application is for users with pets. User can come and make a post or start conversation on forum. Clients can make an account, give some information about theirselfes and talk to other peoples about their pets. I have some ideas for this project, that's why i won't talk about details. Simple project with advertisements and forum inside.
 
-## Description
-This is web application for people with animals. User can create account and add his animals. On this website logged in user can talk with other users about things related to their 'loved' ones, something like forum but with more features, which will come soon. Keep in mind this is still work in progress.
+## Getting Started
+
+To open project on intellij IDEA:
+ - clone this repository
+ ```
+ git clone repo-url
+ ```
+ * open intellij
+ * go to File
+ * Open with existing sources
+ * choose folder with cloned repo
+ * open it
+ 
+ Application is ready under this link:
+ ```
+ http://localhost:8080
+ ```
+ 
+## Technologies Used
+
+* Spring Boot
+* Spring Security
+* Maven
+* Spring Data
+* Hibernate
+* Spring Form
+* MySql Database
+* MySql Workbench
+* Lombok
+* JSTL
