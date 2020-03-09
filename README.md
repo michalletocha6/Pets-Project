@@ -35,3 +35,5 @@ To open project on intellij IDEA:
 * MySql Workbench
 * Lombok
 * JSTL
+* JavaScript
+* AJAX
