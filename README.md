@@ -37,3 +37,5 @@ To open project on intellij IDEA:
 * JSTL
 * JavaScript
 * AJAX
+* JPQL
+* Jquery
