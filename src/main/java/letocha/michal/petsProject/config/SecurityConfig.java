@@ -1,4 +1,4 @@
-package letocha.michal.petsProject;
+package letocha.michal.petsProject.config;
 
 import letocha.michal.petsProject.service.SpringDataUserDetailsService;
 import org.springframework.context.annotation.Bean;

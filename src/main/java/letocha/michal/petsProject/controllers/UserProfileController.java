@@ -6,6 +6,7 @@ import letocha.michal.petsProject.entity.AppUser;
 import letocha.michal.petsProject.entity.Breed;
 import letocha.michal.petsProject.entity.CurrentUser;
 import letocha.michal.petsProject.entity.Type;
+import letocha.michal.petsProject.service.AdvertisementService;
 import letocha.michal.petsProject.service.AnimalService;
 import letocha.michal.petsProject.service.BreedService;
 import letocha.michal.petsProject.service.TypeService;
@@ -38,12 +39,15 @@ public class UserProfileController {
     private final TypeService typeService;
     private final AnimalService animalService;
     private final BreedService breedService;
+    private final AdvertisementService advertisementService;
 
-    public UserProfileController(UserService userService, TypeService typeService, AnimalService animalService, BreedService breedService) {
+    public UserProfileController(UserService userService, TypeService typeService, AnimalService animalService,
+                                 BreedService breedService, AdvertisementService advertisementService) {
         this.userService = userService;
         this.typeService = typeService;
         this.animalService = animalService;
         this.breedService = breedService;
+        this.advertisementService = advertisementService;
     }
 
     @GetMapping
@@ -132,10 +136,16 @@ public class UserProfileController {
         return "redirect:/profile";
     }
 
-    //  -----------------------------------------  ANIMAL SECTION ---------------------------------------- //
+    //  -----------------------------------------  ADVERTISEMENT SECTION ---------------------------------------- //
+
+    @ModelAttribute("advertisements")
+    public List<Advertisement> advertisementList() {
+        return advertisementService.getCurrentUserAdvertisements();
+    }
 
     @GetMapping("/advertisements")
     public String advList() {
         return "advertisement/advertisementList";
     }
+
 }
