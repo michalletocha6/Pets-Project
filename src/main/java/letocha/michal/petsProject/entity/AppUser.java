@@ -66,7 +66,7 @@ public class AppUser {
     //    Defaultowa nazwa zdjecia przypisana odrazu, pozniej bedziemy zmieniac
     @Pattern(regexp = ".*\\.(jpg|png|gif)", groups = {EditPhotoValidationGroupName.class}, message = "Niepoprawny plik," +
             " poprawne pliki to .jpg, .png, .gif")
-    private String photo = "userNoPhoto.jpg";
+    private String photo = "unknown-user.png";
 
     @AssertTrue(groups = RegisterValidationGroupName.class)
     private boolean acceptRules;

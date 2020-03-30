@@ -18,13 +18,11 @@
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
-                <sec:authorize access="isAuthenticated()">
-                    <form action="<c:url value="/logout"/>" method="post">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <input type="submit" value="Wyloguj" class="btn btn-primary">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    </form>
-                </sec:authorize>
+                <form action="<c:url value="/logout"/>" method="post">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <input type="submit" value="Wyloguj" class="btn btn-primary">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
             </div>
         </div>
     </div>

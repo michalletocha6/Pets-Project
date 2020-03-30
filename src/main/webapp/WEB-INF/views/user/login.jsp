@@ -39,17 +39,19 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
-                                <form:form modelAttribute="appUser" method="post" class="user">
+                                <form method="post" class="user">
                                     <div class="form-group">
-                                        <form:input path="email" type="email" cssClass="form-control form-control-user"
-                                                    id="exampleInputEmail" aria-describedby="emailHelp"
-                                                    placeholder="Enter Email Address..."/>
-                                        <span style="color: red"><form:errors path="email"/></span>
+                                        <input name="email" type="email" class="form-control form-control-user"
+                                               aria-describedby="emailHelp" placeholder="Enter Email Address">
+<%--                                        <form:input path="email" type="email" cssClass="form-control form-control-user"--%>
+<%--                                                    id="exampleInputEmail" aria-describedby="emailHelp"--%>
+<%--                                                    placeholder="Enter Email Address..."/>--%>
                                     </div>
                                     <div class="form-group">
-                                        <form:password path="password" cssClass="form-control form-control-user"
-                                                       id="exampleInputPassword" placeholder="Password"/>
-                                        <span style="color: red"><form:errors path="password"/></span>
+                                        <input name="password" type="password" class="form-control form-control-user"
+                                               placeholder="Enter Password">
+<%--                                        <form:password path="password" cssClass="form-control form-control-user"--%>
+<%--                                                       id="exampleInputPassword" placeholder="Password"/>--%>
                                     </div>
                                     <c:if test="${!empty param.error}">
                                         <div class="form-group">
@@ -65,14 +67,18 @@
                                     <input class="btn btn-primary btn-user btn-block"
                                            type="submit" value="Login">
                                     <hr>
-                                    <a href="index.html" class="btn btn-google btn-user btn-block">
-                                        <i class="fab fa-google fa-fw"></i> Login with Google
-                                    </a>
-                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                    </a>
+                                    <c:forEach items="${urls}" var="url">
+                                        <a class="btn btn-google btn-user btn-block"
+                                           href="${url.value}">Login with <c:out value="${url.key}"/> </a>
+                                    </c:forEach>
+<%--                                    <a href="index.html" class="btn btn-google btn-user btn-block">--%>
+<%--                                        <i class="fab fa-google fa-fw"></i> Login with Google--%>
+<%--                                    </a>--%>
+<%--                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">--%>
+<%--                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook--%>
+<%--                                    </a>--%>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                </form:form>
+                                </form>
                                 <hr>
                                 <div class="text-center">
                                     <a class="small" href="forgot-password.html">Forgot Password?</a>
