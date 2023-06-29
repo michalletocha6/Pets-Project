@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>letocha.michal</groupId>
-    <artifactId>initializer</artifactId>
+    <artifactId>PetsProject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pets_project</name>
     <description>Project of my web application</description>
